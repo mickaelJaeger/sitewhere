@@ -531,6 +531,7 @@ public class InfluxDbDeviceEvent {
 
 	// Add field for each metadata value.
 	for (String key : event.getMetadata().keySet()) {
+        builder.tag(key, event.getMetadata(key));
 	    builder.addField(EVENT_METADATA_PREFIX + key, event.getMetadata(key));
 	}
     }
