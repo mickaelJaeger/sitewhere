@@ -531,9 +531,9 @@ public class InfluxDbDeviceEvent {
 
 	// Add field for each metadata value.
 	for (String key : event.getMetadata().keySet()) {
-        // if (key.startsWith("CUSTOM_")) {
-            builder.tag(key, event.getMetadata(key));
-        // }
+        if (key.startsWith("CUSTOM_")) { // CUSTOM_blabla -> tag créé
+            builder.tag(key, event.getMetadata(key)); // key.replaceFirst("CUSTOM_", "")
+        }
 	    builder.addField(EVENT_METADATA_PREFIX + key, event.getMetadata(key));
 	}
     }
