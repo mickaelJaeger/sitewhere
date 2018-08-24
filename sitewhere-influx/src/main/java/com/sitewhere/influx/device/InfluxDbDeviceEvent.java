@@ -534,7 +534,9 @@ public class InfluxDbDeviceEvent {
         if (key.startsWith("TAG_")) {
             builder.tag(key, event.getMetadata(key));
         }
-	    builder.addField(EVENT_METADATA_PREFIX + key, event.getMetadata(key));
+        else {
+            builder.addField(EVENT_METADATA_PREFIX + key, event.getMetadata(key));
+        }
 	}
     }
 
